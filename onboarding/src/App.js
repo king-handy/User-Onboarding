@@ -1,9 +1,18 @@
 import React from 'react'
 import axios from 'axios'
-
+import * as yup from 'yup'
+import Form from './Form.js'
 
 import logo from './logo.svg';
 import './App.css';
+
+const initialFormValues = {
+  name: '',
+  email: '',
+  password: '',
+  termsOfService: '',
+  
+}
 
 function App() {
   return (
