@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
-export default function Form() {
+export default function Form(props) {
     const [form, setForm] = useState({
         name: '',
         email: '',
@@ -10,9 +11,10 @@ export default function Form() {
 
     const change = event => {
         const { checked, value, name, type } = event.target
-        const valueToUse = type === 'checkbox'? check : value
+        const valueToUse = type === 'checkbox'? checked : value
         setForm({...form, [name]: valueToUse})
     }
+        const { push } = props.history
 
     const submit = event => {
         event.preventDefault()
@@ -46,6 +48,7 @@ export default function Form() {
                     <input onChange={change} checked={form.termsOfService} name='terms' type='checkbox' />
                 </label>
             </form>
+            <button onClick={() => push('/')}>Return Home</button>
         </div>
     )
 }
