@@ -19,6 +19,8 @@ const initialFormValues = {
 let schema = yup.object().shape({
   name: yup.string().required('Name is required')
   email: yup.string().email()
+  password: yep.string().required('Password is required')
+  
 })
 
 function App() {
