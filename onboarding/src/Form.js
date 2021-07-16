@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function Form() {
-    
+    const [form, setForm] = useState({
+        name: '',
+        email: '',
+        password: '',
+        termsOfService: false,
+    })
+
+    const handleChange = event => {
+        console.log('change!')
+    }
     
     return (
         <div>
@@ -17,9 +26,11 @@ export default function Form() {
                 <label>
                     Password:
                     <input value={form.password} name='password' type='text' onChange={handleChange} />
+                </label>
                 <label>
                     Terms of Service:
-                    <input value={form.terms} name='terms' type='checkbox' onChange={handleChange} />
+                    <input value={form.termsOfService} name='terms' type='checkbox' onChange={handleChange} />
+                </label>
             </form>
         </div>
     )
