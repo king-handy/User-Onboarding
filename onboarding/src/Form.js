@@ -13,6 +13,18 @@ export default function Form() {
         const valueToUse = type === 'checkbox'? check : value
         setForm({...form, [name]: valueToUse})
     }
+
+    const submit = event => {
+        event.preventDefault()
+        const newForm = { name: form.name.trim(), email: form.email.trim(), password: form.password.trim(), terms: form.terms }
+        axios.post('https://reqres.in/api/users', newForm)
+            .then(res => {
+                setForm({ name: '', email: '', password: '', terms: false })
+            })
+            .catch(err => {
+                debugger
+            })
+    }   
     
     return (
         <div>

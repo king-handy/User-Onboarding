@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import * as yup from 'yup'
 import Form from './Form.js'
 
@@ -13,6 +13,11 @@ import './App.css';
 // })
 
 function App() {
+  const [disabled, setDisabled] = useState(true)
+
+  useEffect(() => {
+    yup.isSchema.isValid(form).then(valid => setDisabled(!valid))
+  }, [form])
 
   return (
     <div className="App">
