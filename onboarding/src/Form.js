@@ -5,11 +5,13 @@ export default function Form() {
         name: '',
         email: '',
         password: '',
-        termsOfService: false,
+        terms: false,
     })
 
-    const handleChange = event => {
-        console.log('change!')
+    const change = event => {
+        const { checked, value, name, type } = event.target
+        const valueToUse = type === 'checkbox'? check : value
+        setForm({...form, [name]: valueToUse})
     }
     
     return (
@@ -17,19 +19,19 @@ export default function Form() {
             <form>
                 <label type='text'>
                     Name:
-                    <input value={form.user} name='name' type='text' onChange={handleChange} />
+                    <input onChange={change} value={form.user} name='name' type='text'  />
                 </label>
                 <label>
                     Email:
-                    <input value={form.email} name='email' type='text' onChange={handleChange} />
+                    <input onChange={change} value={form.email} name='email' type='text' />
                 </label>
                 <label>
                     Password:
-                    <input value={form.password} name='password' type='text' onChange={handleChange} />
+                    <input onChange={change} value={form.password} name='password' type='text' />
                 </label>
                 <label>
                     Terms of Service:
-                    <input value={form.termsOfService} name='terms' type='checkbox' onChange={handleChange} />
+                    <input onChange={change} checked={form.termsOfService} name='terms' type='checkbox' />
                 </label>
             </form>
         </div>
